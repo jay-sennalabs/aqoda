@@ -26,7 +26,14 @@ function main() {
       case "book":
         const [room, name, age] = command.params;
         hotel.book(room, name, age);
-        console.log(`Room ${room} is booked by ${name} with keycard number 1.`);
+        return;
+      case "list_available_rooms":
+        hotel.listAvailableRooms();
+        return;
+      case "checkout":
+        const [roomId, guessName] = command.params;
+        hotel.checkoutRoom(roomId,guessName);
+        return;
       default:
         return;
     }
