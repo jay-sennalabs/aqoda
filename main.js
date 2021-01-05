@@ -19,11 +19,14 @@ function main() {
         const [floor, roomPerFloor] = command.params;
         hotel = new Hotel(floor, roomPerFloor);
         hotel.createHotel();
-
         console.log(
           `Hotel created with ${floor} floor(s), ${roomPerFloor} room(s) per floor.`
         );
         return;
+      case "book":
+        const [room, name, age] = command.params;
+        hotel.book(room, name, age);
+        console.log(`Room ${room} is booked by ${name} with keycard number 1.`);
       default:
         return;
     }
