@@ -63,6 +63,10 @@ class Hotel {
           age
         }
       }
+      const foundFirstAvailableKeyCard = this.keycards.findIndex((keyCard)=>
+        !keyCard.room
+      )
+      this.keycards[foundFirstAvailableKeyCard].room = room;
       console.log(`Room ${room} is booked by ${name} with keycard number 1.`);
     } else {
       console.log(`Cannot book room ${floor + roomNumber} for ${name}, The room is currently booked by ${this.rooms[floor - 1][roomNumber].user.name}.`)
@@ -75,7 +79,6 @@ class Hotel {
     const [floor, ...number] = room.toString();
     const roomNumber = number.join("");
 
-    // Keycard not implement yet. So Do keycard first krub.
 
     // console.log('keycards',this.keycards)
 
