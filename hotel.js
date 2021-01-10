@@ -66,6 +66,23 @@ class Hotel {
       console.log("No avilable rooms");
     }
   }
+
+  checkout(keycard, guestName) {
+    const booking = this.bookings.find(booking => booking.keycard === keycard);
+
+    if (booking) {
+      if (booking.guestName === guestName) {
+        this.bookings = this.bookings.filter(
+          booking => booking.keycard !== keycard
+        );
+        console.log(`Room ${booking.roomNumber} is checkout.`);
+      } else {
+        console.log(
+          `Only ${booking.guestName} can checkout with keycard number ${booking.keycard}.`
+        );
+      }
+    }
+  }
 }
 
 module.exports = Hotel;
