@@ -129,6 +129,53 @@ class Hotel {
       console.log(`No guests found on the ${floor}st floor.`);
     }
   }
+
+  checkoutByFloor(floor) {
+    const roomNumbers = this.bookings
+      .filter(booking => booking.floor === floor)
+      .map(booking => booking.roomNumber);
+    if (roomNumbers.length) {
+      this.bookings = this.bookings.filter(
+        booking => !roomNumbers.includes(booking.roomNumber)
+      );
+      console.log(`Room ${roomNumbers.join(", ")} are checkout.`);
+    } else {
+      console.log(`No guests found on the ${floor}st floor.`);
+    }
+  }
+
+  bookingByFloor(floor, guestName, guestAge) {
+    const bookings = this.bookings.filter(booking => booking.floor === floor);
+
+    if (!bookings.length) {
+      const rooms = this.rooms.filter(room => room.floor === floor);
+      let newRooms = [];
+      let newKeycards = [];
+
+      rooms.forEach(room => {
+        const keycard = this.keycards.find(
+          keycard => !this.bookings.some(booking => booking.keycard === keycard)
+        );
+
+        this.bookings.push({
+          ...room,
+          keycard,
+          guestName,
+          guestAge
+        });
+        newRooms.push(room.roomNumber);
+        newKeycards.push(keycard);
+      });
+
+      console.log(
+        `Room ${newRooms.join(
+          ", "
+        )} are booked with keycard number ${newKeycards.join(", ")}`
+      );
+    } else {
+      console.log(`Cannot book floor ${floor} for ${guestName}.`);
+    }
+  }
 }
 
 module.exports = Hotel;

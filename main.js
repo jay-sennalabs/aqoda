@@ -48,8 +48,12 @@ function main() {
         hotel.listGuestByFloor(floor);
         return;
       case "checkout_guest_by_floor":
+        [floor] = command.params;
+        hotel.checkoutByFloor(floor);
         return;
       case "book_by_floor":
+        [floor, guestName, guestAge] = command.params;
+        hotel.bookingByFloor(floor, guestName, guestAge);
         return;
       default:
         return;
