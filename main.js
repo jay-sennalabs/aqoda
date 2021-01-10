@@ -12,7 +12,7 @@ function main() {
   const filename = "input.txt";
   const commands = getCommandsFromFileName(filename);
   let hotel;
-  let floor, roomPerFloor, roomNumber, guestName, guestAge, keycard;
+  let floor, roomPerFloor, roomNumber, guestName, guestAge, keycard, operator;
 
   commands.forEach(command => {
     switch (command.name) {
@@ -40,6 +40,8 @@ function main() {
         hotel.getGuestByRoom(roomNumber);
         return;
       case "list_guest_by_age":
+        [operator, guestAge] = command.params;
+        hotel.listGuestByAge(operator, guestAge);
         return;
       case "list_guest_by_floor":
         return;

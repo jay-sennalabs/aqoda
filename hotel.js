@@ -105,6 +105,18 @@ class Hotel {
       console.log(`No guests found in the room ${roomNumber}.`);
     }
   }
+
+  listGuestByAge(operator, age) {
+    const guestsName = this.bookings
+      .filter(booking => eval(`${booking.guestAge} ${operator} ${age}`))
+      .map(booking => booking.guestName);
+
+    if (guestsName.length) {
+      console.log(guestsName.join(", "));
+    } else {
+      console.log(`No guests found ${operator} ${age} years old.`);
+    }
+  }
 }
 
 module.exports = Hotel;
