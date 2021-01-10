@@ -117,6 +117,18 @@ class Hotel {
       console.log(`No guests found ${operator} ${age} years old.`);
     }
   }
+
+  listGuestByFloor(floor) {
+    const guestsName = this.bookings
+      .filter(booking => booking.floor === floor)
+      .map(booking => booking.guestName);
+
+    if (guestsName.length) {
+      console.log(guestsName.join(", "));
+    } else {
+      console.log(`No guests found on the ${floor}st floor.`);
+    }
+  }
 }
 
 module.exports = Hotel;

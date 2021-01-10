@@ -44,6 +44,8 @@ function main() {
         hotel.listGuestByAge(operator, guestAge);
         return;
       case "list_guest_by_floor":
+        [floor] = command.params;
+        hotel.listGuestByFloor(floor);
         return;
       case "checkout_guest_by_floor":
         return;
