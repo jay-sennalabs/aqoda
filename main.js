@@ -33,6 +33,7 @@ function main() {
         hotel.checkout(keycard, guestName);
         return;
       case "list_guest":
+        hotel.listGuestName();
         return;
       case "get_guest_in_room":
         return;

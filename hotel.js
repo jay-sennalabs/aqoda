@@ -83,6 +83,16 @@ class Hotel {
       }
     }
   }
+
+  listGuestName() {
+    const guestsName = this.bookings.map(booking => booking.guestName);
+
+    if (guestsName.length) {
+      console.log(guestsName.join(", "));
+    } else {
+      console.log("No guests");
+    }
+  }
 }
 
 module.exports = Hotel;
