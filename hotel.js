@@ -93,6 +93,18 @@ class Hotel {
       console.log("No guests");
     }
   }
+
+  getGuestByRoom(roomNumber) {
+    const booking = this.bookings.find(
+      booking => +booking.roomNumber === roomNumber
+    );
+
+    if (booking) {
+      console.log(booking.guestName);
+    } else {
+      console.log(`No guests found in the room ${roomNumber}.`);
+    }
+  }
 }
 
 module.exports = Hotel;

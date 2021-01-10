@@ -36,6 +36,8 @@ function main() {
         hotel.listGuestName();
         return;
       case "get_guest_in_room":
+        [roomNumber] = command.params;
+        hotel.getGuestByRoom(roomNumber);
         return;
       case "list_guest_by_age":
         return;
