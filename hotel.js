@@ -51,6 +51,21 @@ class Hotel {
       );
     }
   }
+
+  listAvailableRooms() {
+    const availableRooms = this.rooms
+      .filter(
+        room =>
+          !this.bookings.some(booking => booking.roomNumber === room.roomNumber)
+      )
+      .map(room => room.roomNumber);
+
+    if (availableRooms.length) {
+      console.log(availableRooms.join(", "));
+    } else {
+      console.log("No avilable rooms");
+    }
+  }
 }
 
 module.exports = Hotel;

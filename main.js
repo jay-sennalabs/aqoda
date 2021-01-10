@@ -26,6 +26,7 @@ function main() {
         hotel.booking(roomNumber, guestName, guestAge);
         return;
       case "list_available_rooms":
+        hotel.listAvailableRooms();
         return;
       case "checkout":
         return;
