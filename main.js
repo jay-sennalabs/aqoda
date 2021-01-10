@@ -12,7 +12,7 @@ function main() {
   const filename = "input.txt";
   const commands = getCommandsFromFileName(filename);
   let hotel;
-  let floor, roomPerFloor;
+  let floor, roomPerFloor, roomNumber, guestName, guestAge;
 
   commands.forEach(command => {
     switch (command.name) {
@@ -20,11 +20,10 @@ function main() {
         [floor, roomPerFloor] = command.params;
         hotel = new Hotel(floor, roomPerFloor);
         hotel.createHotel();
-        console.log(
-          `Hotel created with ${hotel.floor} floor(s), ${hotel.roomPerFloor} room(s) per floor.`
-        );
         return;
       case "book":
+        [roomNumber, guestName, guestAge] = command.params;
+        hotel.booking(roomNumber, guestName, guestAge);
         return;
       case "list_available_rooms":
         return;
